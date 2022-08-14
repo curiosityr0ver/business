@@ -3,25 +3,23 @@ import { connect } from 'react-redux/es/exports';
 import { fetchPosts } from '../ACTIONS';
 import jsonPlaceholder from '../APIS/jsonPlaceholder';
 
-const PostCard = (props) => {
-
-
+const PostCard = ({ posts, fetchPosts }) => {
 
     useEffect(() => {
-        props.fetchPosts();
+        fetchPosts();
+
     }, []);
 
 
     const displayMethod = () => {
 
-        console.log(props);
+        console.log(posts);
 
-
-        return (
-            <div>
-                Boy
-            </div>
-        )
+        return posts.map((post) => {
+            return (
+                <div>hey</div>
+            )
+        })
     }
 
 
