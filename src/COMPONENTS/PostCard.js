@@ -1,18 +1,19 @@
 import { React, useEffect } from 'react';
 import { connect } from 'react-redux/es/exports';
 import { fetchPosts } from '../ACTIONS';
+import { fetchUser } from '../ACTIONS/fetchUser';
 import UserHeader from './UserHeader';
 
-const PostCard = ({ posts, fetchPosts }) => {
+const PostCard = ({ posts, fetchPosts, fetchUser }) => {
 
     useEffect(() => {
         fetchPosts()
-
+        fetchUser()
     }, []);
 
 
     const displayMethod = () => {
-        console.log(posts);
+        // console.log(posts);
 
         //make sure display method is valid for cases where API hasn't returned anything/ global variable is in it's initial state.
         return posts.map((post, index) => {
@@ -56,7 +57,10 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    { fetchPosts: fetchPosts }
+    {
+        fetchPosts: fetchPosts,
+        fetchUser: fetchUser
+    }
 )(PostCard);
 
 

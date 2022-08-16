@@ -4,14 +4,6 @@ import { fetchUser } from '../ACTIONS/fetchUser';
 import { connect } from 'react-redux/es/exports';
 const UserHeader = ({ index, fetchUser, users }) => {
 
-    useEffect(() => {
-        if (users === null) {
-            fetchUser() //to avoid multiple fetch of array
-        }
-
-
-    }, []);
-
     const displayMethod = () => {
         if (users) {
             return (
