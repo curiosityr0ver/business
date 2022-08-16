@@ -5,7 +5,7 @@ import { connect } from 'react-redux/es/exports';
 const UserHeader = ({ index, fetchUser, users }) => {
 
     useEffect(() => {
-        if (users !== null) {
+        if (users === null) {
             fetchUser() //to avoid multiple fetch of array
         }
 
@@ -13,10 +13,12 @@ const UserHeader = ({ index, fetchUser, users }) => {
     }, []);
 
     const displayMethod = () => {
+        if (users) {
+            return (
+                <div className='header'>{users[index].name}</div>
+            )
+        }
 
-        return (
-            <div className='header'>{users[index].name}</div>
-        )
 
     }
 
