@@ -2,10 +2,10 @@ import React from 'react';
 import { useEffect } from 'react';
 import { fetchUser } from '../ACTIONS/fetchUser';
 import { connect } from 'react-redux/es/exports';
-const UserHeader = ({ index, fetchUser, user }) => {
+const UserHeader = ({ index, fetchUser, users }) => {
 
     useEffect(() => {
-        if (!user) {
+        if (!users) {
             fetchUser() //to avoid multiple fetch of array
         }
 
@@ -14,18 +14,15 @@ const UserHeader = ({ index, fetchUser, user }) => {
 
     const displayMethod = () => {
 
-        if (user) {
+        if (users) {  //to avoid null case of users
             return (
-                <div>{user[index].name}</div>
+                <div className='header'>{users[index].name}</div>
             )
         }
-
-
     }
 
     return (
         <div>
-            <h2>Snowy</h2>
             {displayMethod()}
         </div>
     );
@@ -34,7 +31,7 @@ const UserHeader = ({ index, fetchUser, user }) => {
 const mapStateToProps = (state) => {
     return {
 
-        user: state.user
+        users: state.users
 
     }
 }

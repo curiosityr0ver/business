@@ -26,8 +26,6 @@ const PostCard = ({ posts, fetchPosts }) => {
                                 <p>{post.body}</p>
                                 <p>{post.id}</p>
                             </div>
-                        </div>
-                        <div>
                             <UserHeader index={post.userId} />
                         </div>
                     </div>

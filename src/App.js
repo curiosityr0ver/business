@@ -4,7 +4,7 @@ import UserHeader from './COMPONENTS/UserHeader';
 
 const App = () => {
   return (
-    <div>
+    <div className='ui container'>
       <h3>JK</h3>
       <PostCard />
       {/* <UserHeader index="2" /> */}
