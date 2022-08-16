@@ -1,30 +1,51 @@
 import { React, useEffect } from 'react';
 import { connect } from 'react-redux/es/exports';
 import { fetchPosts } from '../ACTIONS';
-import jsonPlaceholder from '../APIS/jsonPlaceholder';
+import UserHeader from './UserHeader';
 
 const PostCard = ({ posts, fetchPosts }) => {
 
     useEffect(() => {
-        fetchPosts();
+        fetchPosts()
 
     }, []);
 
 
     const displayMethod = () => {
-
         console.log(posts);
 
-        return posts.map((post) => {
-            return (
-                <div>hey</div>
-            )
+        //make sure display method is valid for cases where API hasn't returned anything/ global variable is in it's initial state.
+        return posts.map((post, index) => {
+            if (index < 40) {
+                return (
+                    <div className="item" key={post.id}>
+                        <i className="large middle aligned icon user" />
+                        <div className="content">
+                            <div className="description">
+                                <h3>{post.title}</h3>
+                                <p>{post.body}</p>
+                                <p>{post.id}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <UserHeader index={post.userId} />
+                        </div>
+                    </div>
+                )
+            } else {
+                return
+            }
+
         })
     }
 
 
     return (
-        displayMethod()
+        <div className="ui relaxed divided list">
+            <h1>Aabga</h1>
+            {displayMethod()}
+        </div>
+
     );
 }
 

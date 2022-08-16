@@ -1,5 +1,6 @@
 import jsonPlaceholder from "../APIS/jsonPlaceholder";
 
+
 export const fetchPosts = () => async dispatch => {
     const response = await jsonPlaceholder.get('/posts');
 
